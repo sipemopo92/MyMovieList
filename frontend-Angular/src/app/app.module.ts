@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './sharedModule/material.module';
 import { GetFilmOmdbComponent } from './components/main/get-film-omdb/get-film-omdb.component';
 import { FilmListComponent } from './components/main/film-list/film-list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { FilmListComponent } from './components/main/film-list/film-list.compone
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
+    HttpClientModule,
     MaterialModule
   ],
   providers: [],

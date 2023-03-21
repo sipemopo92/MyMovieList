@@ -1,7 +1,7 @@
 <div class="m3">
     <div class="row">
         <div class="column mb2 mx2">
-            Search for your favorite movie using the title or Imdb Id
+            Search for your favorite movie using the title or IMDB Id
         </div>
     </div>
     <div class="row">
@@ -27,11 +27,48 @@
 
     <div class="row">
         <div class="column mx2">
-            <button mat-raised-button color="primary">Searh by Title</button>
+            <button mat-raised-button color="primary" (click)="searchMovieByTitle()">Searh by Title</button>
         </div>
         <div class="column mx2">
-            <button mat-raised-button color="primary">Searh by IMDB Id</button>
+            <button mat-raised-button color="primary" (click)="searchMovieByImdbId()">Searh by IMDB Id</button>
 
         </div>
     </div>
+
+    <div class="row" *ngIf="omdbMovie">
+        <div class="column mx2 mt2">
+            <mat-card class="card">
+                <mat-card-header>
+                    <mat-card-title>
+                        <h1>{{omdbMovie.title}}</h1>
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <div class="row">
+                        <div class="column mx2" *ngIf="omdbMovie.poster!='N/A'">
+                            <img [src]="omdbMovie.poster" class="img">
+                        </div>
+                        <div class="column mx2" style="flex: 3;">
+                            <mat-list>
+                                <mat-list-item><b>Genre:</b> {{omdbMovie.genre}}</mat-list-item>
+                                <mat-list-item><b>Year:</b> {{omdbMovie.year}}</mat-list-item>
+                                <mat-list-item> <b>Released:</b> {{omdbMovie.released}}</mat-list-item>
+                                <mat-list-item><b>Runtime:</b> {{omdbMovie.runtime}}</mat-list-item>
+                                <mat-list-item><b>Director:</b> {{omdbMovie.director}}</mat-list-item>
+                                <mat-list-item><b>Writer:</b> {{omdbMovie.writer}}</mat-list-item>
+                                <mat-list-item><b>Actors:</b> {{omdbMovie.actors}}</mat-list-item>
+                                <mat-list-item><b>Country:</b> {{omdbMovie.country}}</mat-list-item>
+                                <mat-list-item><b>IMDB ID:</b> {{omdbMovie.imdbID}}</mat-list-item>
+                            </mat-list>
+                        </div>
+                    </div>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button>SAVE</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+
+
 </div>
