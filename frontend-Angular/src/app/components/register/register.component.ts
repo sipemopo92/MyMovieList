@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,7 @@ export class RegisterComponent {
   formRegister: FormGroup = new FormGroup({});
 
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private authservice: AuthService) { }
 
 
   ngOnInit() {

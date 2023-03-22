@@ -5,19 +5,14 @@ import { FilmListComponent } from './components/main/film-list/film-list.compone
 import { GetFilmOmdbComponent } from './components/main/get-film-omdb/get-film-omdb.component';
 import { MainComponent } from './components/main/main.component';
 import { RegisterComponent } from './components/register/register.component';
+import { RouteGuardService } from './services/route-guard.service';
 
 const routes: Routes = [
   {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: 'register',
-    component: RegisterComponent
-  },
-  {
     path: '',
     component: MainComponent,
+    canActivate: [RouteGuardService],
+    canActivateChild: [RouteGuardService],
     children: [
       {
         path: '',
@@ -35,6 +30,14 @@ const routes: Routes = [
     ]
   },
   {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
+  },
+  {
     path: '**',
     redirectTo: '',
     pathMatch: 'full'
@@ -42,7 +45,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

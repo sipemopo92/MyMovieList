@@ -13,6 +13,7 @@ import { FilmListComponent } from './components/main/film-list/film-list.compone
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { RouteGuardService } from './services/route-guard.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { RegisterComponent } from './components/register/register.component';
     HttpClientModule,
     MaterialModule
   ],
-  providers: [],
+  providers: [RouteGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
