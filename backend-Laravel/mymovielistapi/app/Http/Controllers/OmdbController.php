@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Http;
 class OmdbController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
+
     public function getMovie(Request $request)
     {
         $apiKey = '608f851d';
