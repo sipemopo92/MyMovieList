@@ -1,3 +1,4 @@
+import { HttpHeaderResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -24,7 +25,7 @@ export class RegisterComponent {
   newFormRegister() {
     this.formRegister = new FormGroup({
       name: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required] ),
+      email: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required, Validators.minLength(4)]),
     });
   }
@@ -37,9 +38,16 @@ export class RegisterComponent {
     let name = this.formRegister.value.name;
     let email = this.formRegister.value.email;
     let password = this.formRegister.value.password;
-    console.log(`NAME: ${name}`);
-    console.log(`EMAIL: ${email}`);
-    console.log(`PASSWORD: ${password}`);
+    this.authservice.register(name, email, password).subscribe(
+      (payload: any) => {
+        localStorage.setItem('token', payload.access_token);
+        localStorage.setItem('user', JSON.stringify(payload));
+        this.router.navigate(['main']);
+      },
+      (error: HttpHeaderResponse) => {
+        console.log(error);
+      }
+    );
   }
 
 

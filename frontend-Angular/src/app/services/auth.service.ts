@@ -36,7 +36,7 @@ export class AuthService {
 
 
   register(name: string, email: string, password: string) {
-
+    return this.httpclient.post(this.authUrl + 'register', { name: name, email: email, password: password });
   }
 
 
