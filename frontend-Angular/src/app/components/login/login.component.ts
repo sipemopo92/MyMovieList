@@ -1,3 +1,4 @@
+import { HttpHeaderResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -22,7 +23,7 @@ export class LoginComponent implements OnInit {
 
   newFormLogin() {
     this.formLogin = new FormGroup({
-      email: new FormControl('', [Validators.required] ),
+      email: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required, Validators.minLength(4)]),
     });
   }
@@ -33,9 +34,18 @@ export class LoginComponent implements OnInit {
   login() {
     let email = this.formLogin.value.email;
     let password = this.formLogin.value.password;
-    this.authservice.login(email, password);
-    console.log(`EMAIL: ${email}`);
-    console.log(`PASSWORD: ${password}`);
+    this.authservice.login(email, password).subscribe(
+      (payload: any) => {
+        localStorage.setItem('token', payload.access_token);
+        localStorage.setItem('user', JSON.stringify(payload));
+        this.router.navigate(['main']);
+      },
+      (error: HttpHeaderResponse) => {
+        alert('Email or password not correct')
+        console.log(error);
+      }
+    )
+
   }
 
   goToRegistration() {

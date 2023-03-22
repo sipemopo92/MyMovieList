@@ -19,38 +19,22 @@ export class AuthService {
 
 
   private authUrl = 'http://127.0.0.1:8000/api/auth/'
-  private isUserLogged = true;
-  
+  private isUserLogged = false;
+
   constructor(private httpclient: HttpClient) { }
 
 
   isUserLoggedIn() {
+    this.isUserLogged = !!localStorage.getItem('token');
     return this.isUserLogged;
   }
 
 
   login(email: string, password: string) {
-    this.httpclient.post(this.authUrl + 'login',
-    {
-        email: email,
-        password: password
-    }
-    ).subscribe(
-      (payload: any) => {
-        localStorage.setItem('token', payload.access_token);
-        localStorage.setItem('user' , JSON.stringify(payload));
-        console.log('CI PASSO');
-      },
-      (error: HttpHeaderResponse) => {
-        alert('Email or password not correct')
-        console.log(error);
-      }
-    )
-
-
+    return this.httpclient.post(this.authUrl + 'login', { email: email, password: password });
   }
 
-  
+
   register(name: string, email: string, password: string) {
 
   }
@@ -64,10 +48,10 @@ export class AuthService {
 
 
   getUser(): User {
-    let data = []; 
-    if(localStorage.getItem('user')) data = JSON.parse(localStorage.getItem('user')!);
+    let data = [];
+    if (localStorage.getItem('user')) data = JSON.parse(localStorage.getItem('user')!);
     let user = new User();
-    if(data){
+    if (data) {
       user.name = data['name'];
       user.email = data['email'];
     }
