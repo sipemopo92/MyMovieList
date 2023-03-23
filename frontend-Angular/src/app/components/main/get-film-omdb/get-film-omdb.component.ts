@@ -31,10 +31,13 @@ export class GetFilmOmdbComponent {
           if (res.success) {
             if (res.message == '') {
               this.omdbMovie = res.data;
+            } else {
+              alert(res.message);
             }
             console.log(res);
           } else {
-            console.error(res)
+            alert(res.message);
+            console.error(res);
           }
         },
         (error: HttpHeaderResponse) => {
@@ -55,7 +58,10 @@ export class GetFilmOmdbComponent {
           if (res.success) {
             if (res.message == '') {
               this.omdbMovie = res.data;
+            } else {
+              alert(res.message);
             }
+            console.log(res);
           } else {
             console.error(res)
           }
