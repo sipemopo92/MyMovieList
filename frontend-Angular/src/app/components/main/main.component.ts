@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout'; import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { User } from 'src/app/models/users';
 `
 `
 @Component({
@@ -16,10 +17,12 @@ export class MainComponent {
   public isScreenSmall!: boolean
 
 
+  user!: User;
   constructor(private breakpointObserver: BreakpointObserver, private router: Router, private authService: AuthService) { }
 
 
   ngOnInit() {
+    this.user = this.authService.getUser();
     this.breakpointObserver.observe([Breakpoints.Small, Breakpoints.XSmall]).subscribe((state: BreakpointState) => {
       this.isScreenSmall = state.matches;
     });

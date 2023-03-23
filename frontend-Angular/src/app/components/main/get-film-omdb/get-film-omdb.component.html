@@ -27,10 +27,14 @@
 
     <div class="row">
         <div class="column mx2">
-            <button mat-raised-button color="primary" (click)="searchMovieByTitle()">Searh by Title</button>
+            <div class="text-center">
+            <button mat-raised-button color="primary" class="search-button" (click)="searchMovieByTitle()">Searh by Title</button>
         </div>
+    </div>
         <div class="column mx2">
-            <button mat-raised-button color="primary" (click)="searchMovieByImdbId()">Searh by IMDB Id</button>
+            <div class="text-center">
+            <button mat-raised-button color="primary" class="search-button" (click)="searchMovieByImdbId()">Searh by IMDB Id</button>
+        </div>
 
         </div>
     </div>

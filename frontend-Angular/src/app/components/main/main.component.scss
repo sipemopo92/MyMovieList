@@ -17,3 +17,22 @@
 mat-sidenav {
     width: 200px;
 }
+
+
+mat-divider {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+
+.avatar {
+    margin-top: 16px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+
+.spacer {
+    flex: 1 1 auto;
+}
