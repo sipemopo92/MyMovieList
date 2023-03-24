@@ -35,6 +35,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::resource('users', UsersController::class);
+
 Route::get('/omdb', [OmdbController::class, 'getMovie']);
 
 Route::get('movies/{id}', [MovieController::class, 'index']);

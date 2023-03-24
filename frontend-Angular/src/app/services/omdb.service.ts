@@ -9,7 +9,7 @@ import { AuthService } from './auth.service';
 export class OmdbService {
 
 
-  private apiUrl = 'http://127.0.0.1:8000/api/omdb'
+  private apiUrl = 'http://127.0.0.1:8000/api/omdb';
 
 
   constructor(private httpClient: HttpClient, private authService: AuthService) { }

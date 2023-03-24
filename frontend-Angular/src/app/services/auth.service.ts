@@ -52,6 +52,7 @@ export class AuthService {
     if (localStorage.getItem('user')) data = JSON.parse(localStorage.getItem('user')!);
     let user = new User();
     if (data) {
+      user.id = data['id'];
       user.name = data['name'];
       user.email = data['email'];
     }

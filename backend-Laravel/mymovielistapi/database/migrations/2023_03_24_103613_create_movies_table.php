@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('year')->nullable();
-            $table->date('released')->nullable();
+            $table->string('released')->nullable();
             $table->string('runtime')->nullable();
             $table->string('writer')->nullable();
             $table->string('country')->nullable();

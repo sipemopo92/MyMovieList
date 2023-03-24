@@ -8,12 +8,25 @@ use Illuminate\Http\Request;
 
 class MovieController extends Controller
 {
+
     public function index($user_id)
     {
-        $user = User::find($user_id);
-        $movies = $user->movies;
-        return response()->json($movies);
+        $res = [
+            'data' => '',
+            'success' => true,
+            'message' => ''
+        ];
+        try {
+            $user = User::find($user_id);
+            $movies = $user->movies;
+            $res['data'] = $movies;
+        } catch (\Exception $e) {
+            $res['success'] = false;
+            $res['message'] = $e->getMessage();
+        }
+        return $res;
     }
+
 
     public function store($user_id, Request $request)
     {
@@ -31,6 +44,7 @@ class MovieController extends Controller
                     'year' => $request->year,
                     'released' => $request->released,
                     'runtime' => $request->runtime,
+                    'writer' => $request->writer,
                     'country' => $request->country,
                 ]
             );

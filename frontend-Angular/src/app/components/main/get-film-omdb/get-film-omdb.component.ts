@@ -2,7 +2,9 @@ import { HttpHeaderResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { OmdbMovie } from 'src/app/models/omdb-movie';
+import { User } from 'src/app/models/users';
 import { AuthService } from 'src/app/services/auth.service';
+import { MoviesService } from 'src/app/services/movies.service';
 import { OmdbService } from 'src/app/services/omdb.service';
 
 
@@ -16,10 +18,17 @@ export class GetFilmOmdbComponent {
   title = '';
   imdbId = '';
   omdbMovie: OmdbMovie | null = null;
+  user!: User;
 
-  constructor(private omdbService: OmdbService, private authService: AuthService, private router: Router) { }
+  constructor(
+    private omdbService: OmdbService, 
+    private authService: AuthService, 
+    private router: Router,
+    private moviesService: MoviesService
+    ) { }
 
   ngOnInit() {
+    this.user = this.authService.getUser();
   }
 
   searchMovieByTitle() {
@@ -75,5 +84,22 @@ export class GetFilmOmdbComponent {
     }
   }
 
+
+  storeMovie() {
+    this.moviesService.storeMovie(this.user.id, this.omdbMovie!).subscribe( 
+      res => {
+        if (res.success) {
+          console.log('SUCCESSO');
+        } else {
+          console.error(res)
+        }
+      },
+      (error: HttpHeaderResponse) => {
+        console.error(error);
+        this.authService.logout();
+        this.router.navigate(['login']);
+      }
+    );
+  }
 
 }
