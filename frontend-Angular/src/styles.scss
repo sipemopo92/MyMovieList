@@ -5,10 +5,12 @@ body {
     height: 100%;
 }
 
+
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
 
 .container-fluid {
     width: 100%;
@@ -18,6 +20,7 @@ body {
     margin-left: auto;
 }
 
+
 .row {
     display: flex;
     flex-direction: row;
@@ -25,38 +28,45 @@ body {
     width: 100%;
 }
 
+
 .column {
     display: flex;
     flex-direction: column;
     flex-basis: 100%;
     flex: 1;
-
 }
+
 
 .m3 {
     margin: 1rem;
 }
 
+
 .ml2 {
     margin-left: 0.5rem;
 }
 
+
 .mr2 {
     margin-right: 0.5rem;
 }
+
 
 .mx2 {
     margin-right: 0.5rem;
     margin-left: 0.5rem;
 }
 
+
 .mb2 {
     margin-bottom: 0.5rem;
 }
 
+
 .mt2 {
     margin-top: 0.5rem;
 }
+
 
 .text-center {
     text-align: center;

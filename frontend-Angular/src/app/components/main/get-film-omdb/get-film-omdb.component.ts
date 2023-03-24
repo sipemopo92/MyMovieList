@@ -16,10 +16,12 @@ import { OmdbService } from 'src/app/services/omdb.service';
 })
 export class GetFilmOmdbComponent {
 
+
   title = '';
   imdbId = '';
   omdbMovie: OmdbMovie | null = null;
   user!: User;
+
 
   constructor(
     private omdbService: OmdbService,
@@ -29,9 +31,11 @@ export class GetFilmOmdbComponent {
     private snackBar: MatSnackBar
   ) { }
 
+
   ngOnInit() {
     this.user = this.authService.getUser();
   }
+
 
   searchMovieByTitle() {
     if (this.title == '') {
@@ -59,6 +63,7 @@ export class GetFilmOmdbComponent {
       );
     }
   }
+
 
   searchMovieByImdbId() {
     if (this.imdbId == '') {
@@ -109,4 +114,5 @@ export class GetFilmOmdbComponent {
     );
   }
 
+  
 }

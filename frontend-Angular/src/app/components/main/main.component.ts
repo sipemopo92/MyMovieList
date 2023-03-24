@@ -14,11 +14,14 @@ export class MainComponent {
 
 
   @ViewChild(MatSidenav) sidenav!: MatSidenav;
-  public isScreenSmall!: boolean
-
-
+  isScreenSmall!: boolean
   user!: User;
-  constructor(private breakpointObserver: BreakpointObserver, private router: Router, private authService: AuthService) { }
+
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private router: Router,
+    private authService: AuthService
+  ) { }
 
 
   ngOnInit() {
@@ -38,5 +41,6 @@ export class MainComponent {
     this.authService.logout();
     this.router.navigate(['login']);
   }
+
 
 }
