@@ -16,7 +16,8 @@ export class FilmListComponent {
 
   user!: User;
   movies: Movie[] = [];
-  displayedColumns = ['title', 'year', 'released', 'runtime', 'writer', 'country', 'imdb_id'];
+  displayedColumns = ['title', 'year', 'released', 'runtime', 'writer', 'country', 'imdb_id', 'delete'];
+
 
   constructor(
     private authService: AuthService,
@@ -24,13 +25,18 @@ export class FilmListComponent {
     private moviesService: MoviesService
   ) { }
 
+
   ngOnInit() {
     this.user = this.authService.getUser();
+    this.getMovies()
+  }
+
+
+  getMovies() {
     this.moviesService.getMovies(this.user.id).subscribe(
       res => {
         if (res.success) {
           this.movies = res.data;
-          console.log(res.data);
         } else {
           console.error(res.message);
         }
@@ -42,5 +48,24 @@ export class FilmListComponent {
       }
     )
   }
+
+
+  deleteRow(movie: any){
+    this.moviesService.removeUserMovie(this.user.id, movie.id).subscribe(
+      res => {
+        if (res.success) {
+          this.getMovies();
+        } else {
+          console.error(res.message);
+        }
+      },
+      (error: HttpHeaderResponse) => {
+        console.error(error);
+        this.authService.logout();
+        this.router.navigate(['login']);
+      }
+    )
+  }
+
 
 }

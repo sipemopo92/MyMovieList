@@ -1,0 +1,12 @@
+.table-container {
+    max-height: calc(100vh - 96px);
+    overflow: auto;
+}
+
+.mat-column-title {
+    border-right: 1px solid currentColor;
+}
+
+.mat-column-delete {
+    border-left: 1px solid currentColor;
+}

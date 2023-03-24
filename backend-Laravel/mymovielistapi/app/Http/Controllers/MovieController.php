@@ -59,4 +59,25 @@ class MovieController extends Controller
         }
         return $res;
     }
+
+
+    public function removeUser($user_id, $movie_id) {
+        $res = [
+            'data' => '',
+            'success' => true,
+            'message' => ''
+        ];
+        try {
+            $movie = Movie::find($movie_id);
+            if ($movie) {
+                $movie->users()->detach($user_id);
+                $res['data'] = $movie;
+            }
+        } catch (\Exception $e) {
+            $res['success'] = false;
+            $res['message'] = $e->getMessage();
+        }
+        return $res;
+    }
+
 }

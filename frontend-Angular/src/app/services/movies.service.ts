@@ -35,10 +35,15 @@ export class MoviesService {
   }
 
 
+  removeUserMovie(user_id: number, movie_id: number) {
+    return this.httpClient.delete<ResponseMovie>(this.apiUrl + '/' + user_id + '/' + movie_id,  {headers: this.getAuthHeader()})
+  }
+
+
   getAuthHeader(): HttpHeaders {
     const headers = new HttpHeaders({ Authorization: 'Bearer ' + this.authService.getToken() });
     return headers;
   }
 
-
+  
 }

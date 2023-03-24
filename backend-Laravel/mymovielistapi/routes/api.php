@@ -40,3 +40,4 @@ Route::get('/omdb', [OmdbController::class, 'getMovie']);
 
 Route::get('movies/{id}', [MovieController::class, 'index']);
 Route::post('movies/{id}', [MovieController::class, 'store']);
+Route::delete('movies/{user_id}/{movie_id}', [MovieController::class, 'removeUser']);
