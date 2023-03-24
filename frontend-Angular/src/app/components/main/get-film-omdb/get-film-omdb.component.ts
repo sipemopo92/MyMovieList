@@ -1,5 +1,6 @@
 import { HttpHeaderResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { OmdbMovie } from 'src/app/models/omdb-movie';
 import { User } from 'src/app/models/users';
@@ -21,11 +22,12 @@ export class GetFilmOmdbComponent {
   user!: User;
 
   constructor(
-    private omdbService: OmdbService, 
-    private authService: AuthService, 
+    private omdbService: OmdbService,
+    private authService: AuthService,
     private router: Router,
-    private moviesService: MoviesService
-    ) { }
+    private moviesService: MoviesService,
+    private snackBar: MatSnackBar
+  ) { }
 
   ngOnInit() {
     this.user = this.authService.getUser();
@@ -86,10 +88,15 @@ export class GetFilmOmdbComponent {
 
 
   storeMovie() {
-    this.moviesService.storeMovie(this.user.id, this.omdbMovie!).subscribe( 
+    this.moviesService.storeMovie(this.user.id, this.omdbMovie!).subscribe(
       res => {
         if (res.success) {
-          console.log('SUCCESSO');
+          this.snackBar.open('Saved!', '', {
+            horizontalPosition: 'end',
+            verticalPosition: 'bottom',
+            duration: 3000,
+            panelClass: 'text-center'
+          });
         } else {
           console.error(res)
         }

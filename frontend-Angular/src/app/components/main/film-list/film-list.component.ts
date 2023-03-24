@@ -1,5 +1,6 @@
 import { HttpHeaderResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Movie } from 'src/app/models/movie';
 import { User } from 'src/app/models/users';
@@ -22,7 +23,8 @@ export class FilmListComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private moviesService: MoviesService
+    private moviesService: MoviesService,
+    private snackBar: MatSnackBar
   ) { }
 
 
@@ -54,6 +56,12 @@ export class FilmListComponent {
     this.moviesService.removeUserMovie(this.user.id, movie.id).subscribe(
       res => {
         if (res.success) {
+          this.snackBar.open('Deleted!', '', {
+            horizontalPosition: 'end',
+            verticalPosition: 'bottom',
+            duration:  3000,
+            panelClass: 'text-center'
+          });
           this.getMovies();
         } else {
           console.error(res.message);
