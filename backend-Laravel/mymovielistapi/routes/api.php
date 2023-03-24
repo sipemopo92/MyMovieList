@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{UsersController, AuthController};
 use App\Http\Controllers\OmdbController;
+use App\Http\Controllers\MovieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +36,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::resource('users', UsersController::class);
 Route::get('/omdb', [OmdbController::class, 'getMovie']);
+
+Route::get('movies/{id}', [MovieController::class, 'index']);
+Route::post('movies/{id}', [MovieController::class, 'store']);
