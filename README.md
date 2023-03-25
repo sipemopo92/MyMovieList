@@ -17,14 +17,15 @@ Before you begin, make sure you have the following system requirements:
 
 Follow the instructions below to install the application:
 
-1. Clone the GitHub repository on your computer: `git clone https://github.com/sipemopo92/repository-name.git`
-
+1. Clone the GitHub repository on your computer: `git clone https://github.com/sipemopo92/MyMovieList.git`
 2. Open a terminal window in the project directory.
 3. Install the backend dependencies: `composer install`
 4. Create the `.env` file: `cp .env.example .env`
 5. Generate the Laravel application key: `php artisan key:generate`
-6. Create the database and seed it with sample data: `php artisan migrate`
-7. Install the frontend dependencies: `npm install`
+7. Configure the database settings in the .env file:
+8. Create the database and seed it with sample data: `php artisan migrate`
+9. Generate the JWT secret: `php artisan jwt:secret`
+9. Install the frontend dependencies: `npm install`
 
 
 ## Running the app
