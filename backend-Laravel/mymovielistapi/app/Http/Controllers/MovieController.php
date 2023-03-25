@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Movie;
 use App\Models\User;
 use App\Models\Actor;
+use App\Models\Director;
 use Illuminate\Http\Request;
 
 class MovieController extends Controller
@@ -19,7 +20,7 @@ class MovieController extends Controller
         ];
         try {
             $user = User::find($user_id);
-            $movies = $user->movies()->with('actors:id,name')->get();
+            $movies = $user->movies()->with(['actors:id,name', 'directors:id,name'])->get();
             $res['data'] = $movies;
         } catch (\Exception $e) {
             $res['success'] = false;
@@ -58,6 +59,14 @@ class MovieController extends Controller
                 $actor = Actor::firstOrCreate(['name' => $actorName]);
                 if (!$movie->actors()->where('actors.id', $actor->id)->exists()) {
                     $movie->actors()->attach($actor);
+                }
+            }
+            $directorsString = $request->director;
+            $directors = explode(', ', $directorsString);
+            foreach($directors as $directorName) {
+                $director = Director::firstOrCreate(['name' => $directorName]);
+                if (!$movie->directors()->where('directors.id', $director->id)->exists()) {
+                    $movie->directors()->attach($director);
                 }
             }
 

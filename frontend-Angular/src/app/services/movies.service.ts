@@ -25,7 +25,8 @@ export class MoviesService {
       'writer': omdbMovie.writer,
       'country': omdbMovie.country,
       'imdb_id': omdbMovie.imdbID,
-      'actors': omdbMovie.actors
+      'actors': omdbMovie.actors,
+      'director': omdbMovie.director
     };
     return this.httpClient.post<ResponseMovie>(this.apiUrl + '/' + user_id, body, { headers: this.getAuthHeader() });
   }

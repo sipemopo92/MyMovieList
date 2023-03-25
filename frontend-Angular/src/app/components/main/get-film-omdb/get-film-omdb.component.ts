@@ -46,6 +46,7 @@ export class GetFilmOmdbComponent {
           if (res.success) {
             if (res.message == '') {
               this.omdbMovie = res.data;
+              console.log(this.omdbMovie);
             } else {
               alert(res.message);
             }
