@@ -1,3 +1,5 @@
+import { Actor } from "./actor";
+
 export interface Movie {
     id: number;
     title: string;
@@ -8,4 +10,6 @@ export interface Movie {
     writer: string;
     country: string;
     imdb_id: string;
+    actros: Actor[];
 }
+

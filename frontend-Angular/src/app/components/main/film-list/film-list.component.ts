@@ -2,6 +2,7 @@ import { HttpHeaderResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { Actor } from 'src/app/models/actor';
 import { Movie } from 'src/app/models/movie';
 import { User } from 'src/app/models/users';
 import { AuthService } from 'src/app/services/auth.service';
@@ -17,7 +18,7 @@ export class FilmListComponent {
 
   user!: User;
   movies: Movie[] = [];
-  displayedColumns = ['title', 'year', 'released', 'runtime', 'writer', 'country', 'imdb_id', 'delete'];
+  displayedColumns = ['title', 'year', 'released', 'runtime', 'writer', 'actors', 'country', 'imdb_id', 'delete'];
 
 
   constructor(
@@ -75,5 +76,9 @@ export class FilmListComponent {
     )
   }
 
+
+  getActorNames(actors: Actor[]): string {
+    return actors.map(actor => actor.name).join(', ');
+  }
 
 }

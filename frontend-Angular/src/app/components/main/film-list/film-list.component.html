@@ -21,6 +21,12 @@
             <th mat-header-cell *matHeaderCellDef> Writer </th>
             <td mat-cell *matCellDef="let movie"> {{movie.writer}} </td>
         </ng-container>
+
+        <ng-container matColumnDef="actors">
+            <th mat-header-cell *matHeaderCellDef> Actors </th>
+            <td mat-cell *matCellDef="let movie"> {{getActorNames(movie.actors)}} </td>
+        </ng-container>
+
         <ng-container matColumnDef="country">
             <th mat-header-cell *matHeaderCellDef> Country </th>
             <td mat-cell *matCellDef="let movie"> {{movie.country}} </td>

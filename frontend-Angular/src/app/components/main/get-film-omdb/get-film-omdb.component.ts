@@ -49,7 +49,6 @@ export class GetFilmOmdbComponent {
             } else {
               alert(res.message);
             }
-            console.log(res);
           } else {
             alert(res.message);
             console.error(res);

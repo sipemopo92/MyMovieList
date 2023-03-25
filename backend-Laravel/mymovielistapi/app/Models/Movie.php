@@ -9,9 +9,10 @@ class Movie extends Model
 {
     use HasFactory;
 
+
     protected $fillable = [
-        'title', 
-        'year', 
+        'title',
+        'year',
         'released',
         'runtime',
         'writer',
@@ -19,8 +20,16 @@ class Movie extends Model
         'imdb_id',
     ];
 
+
     public function users()
     {
         return $this->belongsToMany(User::class, 'user_movie');
     }
+
+
+    public function actors()
+    {
+        return $this->belongsToMany(Actor::class, 'actor_movie');
+    }
+
 }
