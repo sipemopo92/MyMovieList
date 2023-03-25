@@ -1,5 +1,8 @@
 # MyMovieList
 
+![image](https://user-images.githubusercontent.com/53116541/227713277-035e6396-22a4-40d7-b2c3-5782d7dfeeed.png)
+
+
 This application was created with the goal of providing an example of how to use Angular, Laravel, and JSON Web Token (JWT) to create a web application for movie search.
 
 The application uses the OMDB database API to allow users to search for and view information about movies. In addition, users can register and log in to the application using JSON Web Token (JWT).
