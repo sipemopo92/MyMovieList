@@ -1,6 +1,14 @@
 # MyMovieList
 
-This is a web application that uses Angular as the frontend framework and Laravel as the backend framework. In this README file, I will provide you with the instructions to install and try the application on your computer.
+This application was created with the goal of providing an example of how to use Angular, Laravel, and JSON Web Token (JWT) to create a web application for movie search.
+
+The application uses the OMDB database API to allow users to search for and view information about movies. In addition, users can register and log in to the application using JSON Web Token (JWT).
+
+The application also allows users to save their favorite movies to their own database, so they can easily access them in the future.
+
+The application's structure is divided into two parts: the frontend and the backend. The frontend was developed using Angular and offers an intuitive and user-friendly interface for movie search. The backend was developed using Laravel and provides authentication and management of favorite movies.
+
+The application was developed for educational purposes and can be used as a basic example for creating more complex applications using Angular, Laravel, and JWT.
 
 
 ## System Requirements
