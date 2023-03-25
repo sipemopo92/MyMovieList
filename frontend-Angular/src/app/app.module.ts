@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { RouteGuardService } from './services/route-guard.service';
+import { SearchFilmOmdbComponent } from './components/main/search-film-omdb/search-film-omdb.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { RouteGuardService } from './services/route-guard.service';
     GetFilmOmdbComponent,
     FilmListComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    SearchFilmOmdbComponent
   ],
   imports: [
     BrowserModule,

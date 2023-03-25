@@ -10,6 +10,13 @@ export interface ResponseOmdb {
 }
 
 
+export interface ResponseOmdbSearch {
+    success: boolean;
+    message: string;
+    data: OmdbMovie[];
+}
+
+
 export interface ResponseUser {
     success: boolean;
     message: string;

@@ -1,0 +1,50 @@
+<div class="m3">
+
+    <div class="row">
+        <div class="column mb2 mx2">
+            <h3>Search for your favorite movie using the title</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column mx2">
+            <mat-form-field>
+                <mat-label>Title</mat-label>
+                <input matInput type="text" [(ngModel)]="title">
+                <button *ngIf="title" matSuffix mat-icon-button aria-label="Clear" (click)="title=''">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <div class="column mx2">
+                <div class="text-center">
+                    <button mat-raised-button color="primary" class="search-button" (click)="searchMovies()">Searh by
+                        Title</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="omdbMovies.length>0">
+        <div class="column mx2 mt2">
+            <mat-card class="card">
+                <mat-card-header>
+                    <mat-card-title>
+                        <h1>Results</h1>
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <mat-list role="list">
+                        <mat-list-item *ngFor="let movie of omdbMovies">
+                            <mat-icon matListItemIcon>radio_button_unchecked</mat-icon>
+                            <span matListItemTitle>{{movie.title}}</span>
+                            <span matListItemLine>IMDB id: {{movie.imdbID}} --- Year: {{movie.year}}</span>
+                        </mat-list-item>
+                    </mat-list>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+
+</div>

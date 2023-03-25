@@ -4,6 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 import { FilmListComponent } from './components/main/film-list/film-list.component';
 import { GetFilmOmdbComponent } from './components/main/get-film-omdb/get-film-omdb.component';
 import { MainComponent } from './components/main/main.component';
+import { SearchFilmOmdbComponent } from './components/main/search-film-omdb/search-film-omdb.component';
 import { RegisterComponent } from './components/register/register.component';
 import { RouteGuardService } from './services/route-guard.service';
 
@@ -22,6 +23,10 @@ const routes: Routes = [
       {
         path: 'getfilm',
         component: GetFilmOmdbComponent
+      },
+      {
+        path: 'searchfilm',
+        component: SearchFilmOmdbComponent
       },
       {
         path: 'filmlist',

@@ -54,4 +54,40 @@ class OmdbController extends Controller
         }
         return $res;
     }
+
+
+    public function searchMovie(Request $request) {
+        $apiKey = '608f851d';
+        $res = [
+            'data' => [],
+            'success' => true,
+            'message' => ''
+        ];
+        try {
+            $title = $request->input('title');
+            if ($title) {
+                $titleFormatted = str_replace(' ', '+', $title);
+                $response = Http::get("http://www.omdbapi.com/?apikey=$apiKey&s=$titleFormatted");
+            }
+            if ($response['Response'] == 'True') {
+                foreach($response['Search'] as $item) {
+                    $movie = [
+                        'title' => $item['Title'],
+                        'year' => $item['Year'],
+                        'imdbID' => $item['imdbID'],
+                    ];
+                    array_push($res['data'], $movie);
+                }
+            } else {
+                $res['message'] = 'Not found';
+            }
+        } catch (\Exception $e) {
+            $res['success'] = false;
+            $res['message'] = $e->getMessage();
+        }
+        return $res;
+    }
+
+
+
 }

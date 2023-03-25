@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ResponseOmdb } from '../models/response-api';
+import { ResponseOmdb, ResponseOmdbSearch } from '../models/response-api';
 import { AuthService } from './auth.service';
 
 @Injectable({
@@ -25,10 +25,15 @@ export class OmdbService {
   }
 
 
+  searchMovies(title: string) {
+    return this.httpClient.get<ResponseOmdbSearch>(this.apiUrl + 'Search/?title=' + title, { headers: this.getAuthHeader() })
+  }
+
+
   getAuthHeader(): HttpHeaders {
     const headers = new HttpHeaders({ Authorization: 'Bearer ' + this.authService.getToken() });
     return headers;
   }
 
-  
+
 }
